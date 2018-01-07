@@ -13,7 +13,7 @@ And a concrete implementation of that class using:
 case class AccountId(value: UUID) extends AnyVal with ValueType { type T = UUID }
 ```
 
-I'm trying to write a macro to generate an implicit `lift` function from the underlying type to the value class type:
+I'm trying to write a macro to generate an implicit `lift` function from the underlying type to the value class type (eg: `UUID => AccountId`):
 
 ```scala
 implicit def liftValueType1[T0, M0 <: ValueType { type T = T0 }](value: T0): M0 = macro Macros.liftValueType1[T0, M0]
