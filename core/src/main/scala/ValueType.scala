@@ -14,7 +14,7 @@ object ValueType {
 
 
 /* Attempt 1:  def liftValueType1(value: T0): M0 */
-  implicit def liftValueType1[T0, M0 <: ValueType.Aux[T0]](value: T0): M0 = macro Macros.liftValueType1[T0, M0]
+  implicit def liftValueType1[T0, M0 <: ValueType { type T = T0 }](value: T0): M0 = macro Macros.liftValueType1[T0, M0]
 
 /* Attempt 2:  def liftValueType2: T0 => M0 */
 
