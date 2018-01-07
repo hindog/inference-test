@@ -16,7 +16,7 @@ case class AccountId(value: UUID) extends AnyVal with ValueType { type T = UUID 
 I'm trying to write a macro to generate an implicit `lift` function from the underlying type to the value class type:
 
 ```scala
-implicit def liftValueType1[T0, M0 <: ValueType.Aux[T0]](value: T0): M0 = macro Macros.liftValueType1[T0, M0]
+implicit def liftValueType1[T0, M0 <: ValueType { type T = T0 }](value: T0): M0 = macro Macros.liftValueType1[T0, M0]
 ```
 
 Macro def looks like this:
